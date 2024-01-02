@@ -14,7 +14,7 @@ import (
 func main() {
 	app := fiber.New()
 
-	if os.Getenv("$ENABLE_SWAGGER") == "1" {
+	if os.Getenv("ENABLE_SWAGGER") == "1" {
 		app.Get("/docs/*", swagger.HandlerDefault)
 	}
 
