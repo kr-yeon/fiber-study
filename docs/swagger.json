@@ -1,0 +1,27 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Fiber Example API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "basePath": "/",
+    "paths": {
+        "/auth": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "responses": {}
+            }
+        },
+        "/user": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "responses": {}
+            }
+        }
+    }
+}

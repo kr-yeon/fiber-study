@@ -1,0 +1,17 @@
+basePath: /
+info:
+  contact: {}
+  title: Fiber Example API
+  version: "1.0"
+paths:
+  /auth:
+    get:
+      responses: {}
+      tags:
+      - User
+  /user:
+    get:
+      responses: {}
+      tags:
+      - User
+swagger: "2.0"
