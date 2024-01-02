@@ -11,9 +11,9 @@ type AuthModule struct {
 	service    service.AuthService
 }
 
-func InitAuthModule(app *fiber.App, authService service.AuthService) AuthModule {
+func Auth(app *fiber.App, authService service.AuthService) AuthModule {
 	return AuthModule{
-		controller: controller.InitAuthController(app, authService),
+		controller: controller.Auth(app, authService),
 		service:    authService,
 	}
 }

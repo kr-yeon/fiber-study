@@ -14,7 +14,7 @@ func main() {
 	app := fiber.New()
 	app.Get("/docs/*", swagger.HandlerDefault)
 
-	module.InitAppModule(app)
+	module.App(app)
 
 	app.Listen(":3000")
 }

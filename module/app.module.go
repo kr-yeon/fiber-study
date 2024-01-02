@@ -5,10 +5,10 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func InitAppModule(app *fiber.App) {
+func App(app *fiber.App) {
 	userService := service.UserService{}
 	authService := service.AuthService{}
 
-	InitUserModule(app, userService)
-	InitAuthModule(app, authService)
+	User(app, userService)
+	Auth(app, authService)
 }

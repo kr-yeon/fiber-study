@@ -11,9 +11,9 @@ type UserModule struct {
 	service    service.UserService
 }
 
-func InitUserModule(app *fiber.App, userService service.UserService) UserModule {
+func User(app *fiber.App, userService service.UserService) UserModule {
 	return UserModule{
-		controller: controller.InitUserController(app, userService),
+		controller: controller.User(app, userService),
 		service:    userService,
 	}
 }

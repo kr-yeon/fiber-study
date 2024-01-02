@@ -10,7 +10,7 @@ type UserController struct {
 	service service.UserService
 }
 
-func InitUserController(app *fiber.App, userService service.UserService) UserController {
+func User(app *fiber.App, userService service.UserService) UserController {
 	controller := UserController{
 		router:  app.Group("user"),
 		service: userService,

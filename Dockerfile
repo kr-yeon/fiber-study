@@ -32,7 +32,7 @@ COPY go.mod go.sum ./
 RUN go mod download
 
 # build
-CMD ["swg", "init"]
+CMD ["swag", "init"]
 CMD ["go", "run", "main.go"]
 
 EXPOSE 3000

@@ -10,7 +10,7 @@ type AuthController struct {
 	service service.AuthService
 }
 
-func InitAuthController(app *fiber.App, authService service.AuthService) AuthController {
+func Auth(app *fiber.App, authService service.AuthService) AuthController {
 	controller := AuthController{
 		router:  app.Group("auth"),
 		service: authService,
@@ -21,7 +21,7 @@ func InitAuthController(app *fiber.App, authService service.AuthService) AuthCon
 	return controller
 }
 
-// @tags User
+// @tags Auth
 // @router /auth [get]
 func (controller AuthController) getAuth() {
 	controller.router.Get("/", controller.service.GetAuth)
