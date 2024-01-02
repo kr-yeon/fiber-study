@@ -13,6 +13,7 @@ import (
 // @BasePath /
 func main() {
 	app := fiber.New()
+	port := "3000"
 
 	if os.Getenv("ENABLE_SWAGGER") == "1" {
 		app.Get("/docs/*", swagger.HandlerDefault)
@@ -20,7 +21,11 @@ func main() {
 
 	module.App(app)
 
-	if err := app.Listen(":3000"); err != nil {
+	if os.Getenv("PORT") != "" {
+		port = os.Getenv("PORT")
+	}
+
+	if err := app.Listen(":" + port); err != nil {
 		panic(err)
 	}
 }

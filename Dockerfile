@@ -22,6 +22,7 @@ ENV GOPATH="/root/go"
 ENV GOROOT="/usr/local/go"
 ENV GOBIN="/usr/local/go/bin"
 ENV ENABLE_SWAGGER="1"
+ENV PORT="3000"
 
 # arm gcc
 RUN CGO_ENABLED=1 GOOS=linux GOARCH=amd64 CC=x86_64-linux-gnu-gcc
