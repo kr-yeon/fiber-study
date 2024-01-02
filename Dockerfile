@@ -16,9 +16,11 @@ RUN echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc
 RUN echo "export GOPATH=$HOME/go" >> ~/.bashrc
 RUN echo "export GOROOT=/usr/local/go" >> ~/.bashrc
 SHELL ["/bin/bash", "-c"]
+RUN git clone https://github.com/kr-yeon/fiber-study
+WORKDIR /fiber-study
 FROM docker:dind
 RUN apk add --no-cache go
-RUN go get -u
+RUN go mod download
 FROM docker:dind
 RUN apk add --no-cache swag
 RUN swag init
