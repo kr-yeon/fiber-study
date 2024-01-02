@@ -22,8 +22,8 @@ FROM docker:dind
 RUN apk add --no-cache go
 COPY go.mod go.sum ./
 RUN go mod download
-FROM docker:dind
-WORKDIR /fiber-study
+#FROM docker:dind
+#WORKDIR /fiber-study
 RUN swag init
 RUN go build -o main .
 
