@@ -5,6 +5,7 @@ import (
 	"awesomeProject/module"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/swagger"
+	"os"
 )
 
 // @title Fiber Example API
@@ -12,7 +13,10 @@ import (
 // @BasePath /
 func main() {
 	app := fiber.New()
-	app.Get("/docs/*", swagger.HandlerDefault)
+
+	if os.Getenv("$ENABLE_SWAGGER") == "1" {
+		app.Get("/docs/*", swagger.HandlerDefault)
+	}
 
 	module.App(app)
 

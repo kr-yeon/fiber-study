@@ -21,6 +21,7 @@ ENV PATH="/usr/local/go/bin:${PATH}"
 ENV GOPATH="/root/go"
 ENV GOROOT="/usr/local/go"
 ENV GOBIN="/usr/local/go/bin"
+ENV ENABLE_SWAGGER=1
 
 # arm gcc
 RUN CGO_ENABLED=1 GOOS=linux GOARCH=amd64 CC=x86_64-linux-gnu-gcc
@@ -36,7 +37,7 @@ RUN go install github.com/swaggo/swag/cmd/swag@latest
 COPY . .
 
 # build
-RUN swag init
+RUN if [ "$ENABLE_SWAGGER" = "1" ] ; then swag init ; fi
 CMD ["go", "run", "main.go"]
 
 EXPOSE 3000
