@@ -15,12 +15,14 @@ RUN apt-get update && apt-get install -y \
 RUN wget https://golang.org/dl/go1.21.5.linux-amd64.tar.gz
 RUN tar -C /usr/local -xzf go1.21.5.linux-amd64.tar.gz
 RUN rm go1.21.5.linux-amd64.tar.gz
+
+# set env
 ENV PATH="/usr/local/go/bin:${PATH}"
 ENV GOPATH="/root/go"
 ENV GOROOT="/usr/local/go"
+ENV GOBIN="/usr/local/go/bin"
 
 # arm gcc
-COPY . .
 RUN CGO_ENABLED=1 GOOS=linux GOARCH=amd64 CC=x86_64-linux-gnu-gcc
 
 # load project
@@ -30,9 +32,11 @@ WORKDIR /fiber-study
 # install package
 COPY go.mod go.sum ./
 RUN go mod download
+RUN go install github.com/swaggo/swag/cmd/swag@latest
+COPY . .
 
 # build
-CMD ["swag", "init"]
+RUN swag init
 CMD ["go", "run", "main.go"]
 
 EXPOSE 3000
